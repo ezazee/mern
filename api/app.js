@@ -1,43 +1,13 @@
 import express from "express";
-import postRoute from "./routes/post.route";
+import authRoute from "./routes/auth.route.js";
+import postRoute from "./routes/post.route.js";
 
 const app = express();
 
+app.use(express.json());
 
-app.use("")
-
-console.log("test")
-
-app.use("/api/test", (req,res) => {
-    res.send("Works")
-})
-
-app.use("/api/auth/register", (req, res) => {
-  res.send("Works");
-});
-
-app.use("/api/auth/login", (req, res) => {
-  res.send("Works");
-});
-
-app.use("/api/auth/logout", (req, res) => {
-  res.send("Works");
-});
-
-app.use("/api/auth/post", (req, res) => {
-  res.send("Works");
-});
-
-app.use("/api/auth/register", (req, res) => {
-  res.send("Works");
-});
-
-app.use("/api/auth/post/1212", (req, res) => {
-  res.send("Works");
-});
-
-
-
+app.use("/api/posts", postRoute);
+app.use("/api/auth", authRoute);
 
 
 app.listen(8800, () => {
